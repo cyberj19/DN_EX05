@@ -4,7 +4,8 @@ using C17_Ex05.BasicDataTypes;
 
 namespace C17_Ex05
 {
-    class ReversedTicTacToe
+    //todo: internal on all classes..
+    internal class ReversedTicTacToe
     {
         private enum eSingleGameFuncResult
         {
@@ -19,16 +20,15 @@ namespace C17_Ex05
             GameOver,
         }
 
-        private const string k_ExitingString = "Q";
         private uint k_MinBoardSize = 3;
         private uint k_MaxBoardSize = 9;
         private ReversedTicTacToeParams m_InitialParams;
-        private ConsoleUI m_UI;
+        private WindowsUI m_UI;
         private GamePlayers m_GamePlayers;
 
         public ReversedTicTacToe()
         {
-            m_UI = new ConsoleUI(new PositiveRange(k_MinBoardSize, k_MaxBoardSize), k_ExitingString);
+            m_UI = new WindowsUI(new PositiveRange(k_MinBoardSize, k_MaxBoardSize));
             m_InitialParams = m_UI.GetInitialParams();
             m_GamePlayers = GamePlayers.CreateFromGameType(m_InitialParams.GameType);
         }

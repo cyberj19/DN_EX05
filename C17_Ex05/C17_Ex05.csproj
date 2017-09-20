@@ -58,10 +58,14 @@
     <Compile Include="ReversedTicTacToe.cs" />
     <Compile Include="UI\ConsoleUI.cs" />
     <Compile Include="UI\ReversedTicTacToeParams.cs" />
+    <Compile Include="UI\WindowsUI.cs" />
     <Compile Include="Utils\ConsoleUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UI\Forms\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
