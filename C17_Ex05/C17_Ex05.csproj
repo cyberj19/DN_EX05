@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{89C53FF9-F2B3-4D45-A797-7C63DA500457}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>C17_Ex05</RootNamespace>
+    <AssemblyName>C17_Ex05</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BasicDataTypes\Board.cs" />
+    <Compile Include="BasicDataTypes\Point.cs" />
+    <Compile Include="BasicDataTypes\PositiveRange.cs" />
+    <Compile Include="BasicDataTypes\TwoDimensionalPositiveRange.cs" />
+    <Compile Include="Game\GameBoardCell.cs" />
+    <Compile Include="Game\GameLogic.cs" />
+    <Compile Include="Game\GameManager.cs" />
+    <Compile Include="Game\GamePlayers.cs" />
+    <Compile Include="Game\GameResult.cs" />
+    <Compile Include="Game\Player\Algorithm\ReverseTicTacToeAlgo.cs" />
+    <Compile Include="Game\Player\ComputerLogic.cs" />
+    <Compile Include="Game\GameType.cs" />
+    <Compile Include="Game\Player\HumanLogic.cs" />
+    <Compile Include="Game\Player\GamePlayer.cs" />
+    <Compile Include="Game\State\BoardLineState.cs" />
+    <Compile Include="Game\State\GameState.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="ReversedTicTacToe.cs" />
+    <Compile Include="UI\ConsoleUI.cs" />
+    <Compile Include="UI\ReversedTicTacToeParams.cs" />
+    <Compile Include="Utils\ConsoleUtils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
