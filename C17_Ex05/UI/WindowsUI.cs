@@ -1,5 +1,6 @@
 ﻿using C17_Ex05.BasicDataTypes;
 using C17_Ex05.Game;
+using C17_Ex05.UI.Forms;
 
 namespace C17_Ex05.UI
 {
@@ -12,6 +13,14 @@ namespace C17_Ex05.UI
         private readonly ReversedTicTacToeParams r_ReversedTicTacToeParams;
         private readonly TwoDimensionalPositiveRange r_BoardCellChoosingRange; // can be changed outside c'tor
 
+        public ReversedTicTacToeParams InitialParams
+        {
+            get
+            {
+                return r_ReversedTicTacToeParams;
+            }
+        }
+            
 
         public WindowsUI(PositiveRange i_BoardRange)
         {
@@ -23,12 +32,43 @@ namespace C17_Ex05.UI
             r_GameWindow = new GameWindowForm(r_ReversedTicTacToeParams.BoardSize);
         }
 
-        public void run()
+        public void Run()
         {
             r_GameWindow.Show();
         }
 
-        
+        public void Clear()
+        {
+            r_GameWindow.ResetBoard();
+        }
+
+        public void RegisterOnInput(BoardCellChosenEventHandler i_EventHandlerFunc) //todo: make sure its ok according to document to do it
+        {
+            r_GameWindow.BoardCellChosen += i_EventHandlerFunc;
+        }
+
+        public void ShowError()
+        {
+            //todo:??
+//            return r_GameWindow.ShowMsg("Error");
+        }
+
+        public bool PromptQuestion(string i_Msg)
+        {
+            return r_GameWindow.PromptQuestion(i_Msg);
+        }
+
+        public bool ShouldRunAnotherGame(string i_EndingRoundMsg)
+        {
+
+            return true;
+//            return PromptQuestion("Would you)
+        }
+
+        public void Close()
+        {
+            //todo:
+        }
 
          /*
 

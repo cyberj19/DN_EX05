@@ -79,7 +79,14 @@ namespace C17_Ex05.Game
             }
             else 
             {
-                retResult = handleValidMakeMoveRequest(i_InputForMove);
+                if (IsInputRequiredForCurrentTurn() && (!i_InputForMove.HasValue))
+                {
+                    retResult = eMoveResult.BadInput;
+                }
+                else
+                {
+                    retResult = handleValidMakeMoveRequest(i_InputForMove);
+                }
             }
 
             return retResult;

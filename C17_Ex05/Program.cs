@@ -5,7 +5,7 @@
         public static void Main()
         {
             ReversedTicTacToe reversedTicTacToeGame = new ReversedTicTacToe();
-            reversedTicTacToeGame.run();
+            reversedTicTacToeGame.Run();
         }
     }
 }

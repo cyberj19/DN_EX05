@@ -1,6 +1,6 @@
 ﻿namespace C17_Ex05.BasicDataTypes
 {
-    struct Point
+    public struct Point
     {
         private uint m_X;
         private uint m_Y;
