@@ -12,6 +12,7 @@ namespace C17_Ex05.Game.Player
 
         private readonly eType r_Type;
         private readonly GameBoardCell.eType r_CellType;
+        private readonly string r_PlayerName;
         private uint m_Score;
         private HumanLogic m_HumanLogic = null;
         private ComputerLogic m_ComputerLogic = null;
@@ -40,11 +41,12 @@ namespace C17_Ex05.Game.Player
             }
         }
 
-        public GamePlayer(eType i_Type, GameBoardCell.eType i_CellType)
+        public GamePlayer(eType i_Type, GameBoardCell.eType i_CellType, string i_PlayerName)
         {
             m_Score = 0;
             r_Type = i_Type;
             r_CellType = i_CellType;
+            r_PlayerName = i_PlayerName;
         }
 
         public void ResetLogicState()
@@ -119,6 +121,11 @@ namespace C17_Ex05.Game.Player
             }
 
             return retMove;
+        }
+
+        public override string ToString()
+        {
+            return r_PlayerName;
         }
     }
 }

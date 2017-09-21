@@ -5,14 +5,15 @@ namespace C17_Ex05.UI
     // holds the initial params for the program
     class ReversedTicTacToeParams
     {
-        private GameType m_GameType;
-        private uint m_BoardSize;
+        private readonly GameType r_GameType;
+        private readonly uint r_BoardSize;
+        private readonly string[] r_PlayerNames;
 
         public GameType GameType
         {
             get
             {
-                return m_GameType;
+                return r_GameType;
             }
         }
 
@@ -20,14 +21,23 @@ namespace C17_Ex05.UI
         {
             get
             {
-                return m_BoardSize;
+                return r_BoardSize;
             }
         }
 
-        public ReversedTicTacToeParams(GameType i_GameType, uint i_BoardSize)
+        public string[] PlayerNames
         {
-            m_GameType = i_GameType;
-            m_BoardSize = i_BoardSize;
+            get
+            {
+                return r_PlayerNames;
+            }
+        }
+
+        public ReversedTicTacToeParams(GameType i_GameType, uint i_BoardSize, string[] i_PlayerNames)
+        {
+            r_GameType = i_GameType;
+            r_BoardSize = i_BoardSize;
+            r_PlayerNames = i_PlayerNames;
         }
     }
 }

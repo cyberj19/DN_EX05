@@ -4,6 +4,9 @@ namespace C17_Ex05.Game
 {
     class GamePlayers
     {
+        private const string k_ComputerName = "Computer";
+        private const uint k_FirstPlayer = 0;
+        private const uint k_SecondPlayer = 1;
         private readonly GamePlayer[] r_Players;
 
         public uint Length
@@ -15,7 +18,7 @@ namespace C17_Ex05.Game
         }
 
         // Create Game players instance from GameType
-        public static GamePlayers CreateFromGameType(GameType i_GameType)
+        public static GamePlayers CreateFromGameType(GameType i_GameType, string[] i_PlayerNames)
         {
             GamePlayer[] gamePlayerArr = null;
 
@@ -24,20 +27,32 @@ namespace C17_Ex05.Game
                 case GameType.eGameType.PlayerVsComputer:
                     gamePlayerArr = new GamePlayer[]
                     {
-                        new GamePlayer(GamePlayer.eType.HumanPlayer, GameBoardCell.eType.X),
-                        new GamePlayer(GamePlayer.eType.ComputerPlayer, GameBoardCell.eType.O)
+                        new GamePlayer(GamePlayer.eType.HumanPlayer, GameBoardCell.eType.X, i_PlayerNames[k_FirstPlayer]),
+                        new GamePlayer(GamePlayer.eType.ComputerPlayer, GameBoardCell.eType.O, k_ComputerName)
                     };
                     break;
                 case GameType.eGameType.PlayerVsPlayer:
                     gamePlayerArr = new GamePlayer[]
                     {
-                        new GamePlayer(GamePlayer.eType.HumanPlayer, GameBoardCell.eType.X),
-                        new GamePlayer(GamePlayer.eType.HumanPlayer, GameBoardCell.eType.O)
+                        new GamePlayer(GamePlayer.eType.HumanPlayer, GameBoardCell.eType.X, i_PlayerNames[k_FirstPlayer]),
+                        new GamePlayer(GamePlayer.eType.HumanPlayer, GameBoardCell.eType.O, i_PlayerNames[k_SecondPlayer])
                     };
                     break;
             }
 
             return new GamePlayers(gamePlayerArr);
+        }
+
+        public string[] GetNames()
+        {
+            string[] playerNames = new string[r_Players.Length];
+
+            for (int i = 0; i < r_Players.Length; i++)
+            {
+                playerNames[i] = r_Players[i].ToString();
+            }
+
+            return playerNames;
         }
 
         private GamePlayers(GamePlayer[] i_Players)

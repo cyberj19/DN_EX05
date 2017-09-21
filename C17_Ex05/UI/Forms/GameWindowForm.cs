@@ -24,7 +24,18 @@ namespace C17_Ex05.UI.Forms
         public GameWindowForm(uint i_BoardSize)
         {
             r_BoardSize = i_BoardSize;
+            //todo: Create labels according to amount of players
             InitializeComponent();
+        }
+
+        public void SetPlayers(string[] i_PlayerNames)
+        {
+
+        }
+
+        public void UpdatePlayerStat(uint i_PlayerIndex, uint i_Score)
+        {
+
         }
 
         public void ResetBoard()
@@ -33,9 +44,14 @@ namespace C17_Ex05.UI.Forms
             //todo: Perhaps create this instance again instead of reseting it.
         }
 
-        public bool PromptQuestion(string i_Msg)
+        public bool PromptQuestion(string i_Title, string i_Msg)
         {
             return true; //todo:
+        }
+
+        public void ShowMsg(string i_Title, string i_Msg)
+        {
+            //todo:...
         }
     }
 }

@@ -30,7 +30,7 @@ namespace C17_Ex05
         public ReversedTicTacToe()
         {
             m_UI = new WindowsUI(new PositiveRange(k_MinBoardSize, k_MaxBoardSize));
-            m_GamePlayers = GamePlayers.CreateFromGameType(m_UI.InitialParams.GameType);
+            m_GamePlayers = GamePlayers.CreateFromGameType(m_UI.InitialParams.GameType, m_UI.InitialParams.PlayerNames);
             m_UI.RegisterOnInput(this.handleInput);
             startNewGame();
         }
@@ -62,6 +62,7 @@ namespace C17_Ex05
             }
             while (!m_CurrGameManager.IsInputRequiredForCurrentTurn());
 
+            //todo: do this also for the computer!
             m_UI.UpdateCurrentUsersTurn(m_CurrGameManager.CurrentPlayerCellType);
 
             //todo: when to return false and when to write about error?
