@@ -58,11 +58,21 @@ namespace C17_Ex05.UI
             return r_GameWindow.PromptQuestion(i_Msg);
         }
 
-        public bool ShouldRunAnotherGame(string i_EndingRoundMsg)
+        public bool ShouldRunAnotherGame(GamePlayers i_GamePlayers, GameResult i_LastGameResult)
         {
 
             return true;
 //            return PromptQuestion("Would you)
+        }
+
+        public void UpdatePlayersStats(GamePlayers i_GamePlayers)
+        {
+
+        }
+
+        public void UpdateCurrentUsersTurn(GameBoardCell.eType i_CurrPlayerCell)
+        {
+
         }
 
         public void Close()

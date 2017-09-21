@@ -39,11 +39,6 @@ namespace C17_Ex05
         public void Run()
         {
             m_UI.Run();
-/*            while (runSingleGame() == eSingleGameFuncResult.RunAnotherGame)
-            {
-                // do nothing, run it again
-            }
-            */
         }
 
         public bool handleInput(Point i_Input)
@@ -52,6 +47,7 @@ namespace C17_Ex05
             Point? currInput = i_Input;
             //todo: throw if not running..
 
+            // first time will run player with input, all next times players without input required (Computer)
             do
             {
                 currMoveResult = makeSingleMove(currInput);
@@ -65,6 +61,8 @@ namespace C17_Ex05
                 }
             }
             while (!m_CurrGameManager.IsInputRequiredForCurrentTurn());
+
+            m_UI.UpdateCurrentUsersTurn(m_CurrGameManager.CurrentPlayerCellType);
 
             //todo: when to return false and when to write about error?
             return true;
@@ -80,17 +78,6 @@ namespace C17_Ex05
         // run a single move
         private eSingleMoveResult makeSingleMove(Point? i_Input)
         {
-//            Point? inputForCurrTurn = null;
- //           GameManager.eMoveResult currMoveResult = GameManager.eMoveResult.Success;
- //           bool isFirstTimeRequestingInput = true;
-
-            /*
-            //todo: not here
-            if (m_CurrGameManager.IsInputRequiredForCurrentTurn())
-            {
-                m_UI.UpdateCurrentUsersTurn(m_CurrGameManager.CurrentPlayerCellType);
-            }*/
-
             GameManager.eMoveResult currMoveResult = m_CurrGameManager.MakeGameMove(i_Input);
 
             return handleFinishSingleMove(currMoveResult);
@@ -148,9 +135,8 @@ namespace C17_Ex05
                 m_GamePlayers.AddScore(gameResult.WinPlayerIndex);
             }
 
-            m_UI.ShowGameResults(m_GamePlayers, i_GameManager.Result);
             m_UI.UpdatePlayersStats(m_GamePlayers);
-            if (m_UI.ShouldRunAnotherGame())
+            if (m_UI.ShouldRunAnotherGame(m_GamePlayers, i_GameManager.Result))
             {
                 retResult = eSingleGameFuncResult.RunAnotherGame;
             }
