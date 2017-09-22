@@ -29,7 +29,7 @@ namespace C17_Ex05.UI
             r_BoardRange = i_BoardRange; //todo: is still required?
             r_ParamsDialog = new ParamsDialogForm(i_BoardRange);
             r_ParamsDialog.Show();
-            r_ReversedTicTacToeParams = new ReversedTicTacToeParams(r_ParamsDialog.GameType, r_ParamsDialog.BoardSize);
+            r_ReversedTicTacToeParams = new ReversedTicTacToeParams(r_ParamsDialog.GameType, r_ParamsDialog.BoardSize, r_ParamsDialog.PlayerNames);
             r_BoardCellChoosingRange = new TwoDimensionalPositiveRange(k_BoardMinChoice, r_ReversedTicTacToeParams.BoardSize, k_BoardMinChoice, r_ReversedTicTacToeParams.BoardSize);
             r_GameWindow = new GameWindowForm(r_ReversedTicTacToeParams.BoardSize);
         }
@@ -91,38 +91,14 @@ namespace C17_Ex05.UI
             for (uint i = 0; i < i_GamePlayers.Length; i++)
             {
                 GamePlayer currPlayer = i_GamePlayers.Get(i);
-//                string currPlayerStr = string.Format("{0} Player: {1} Times won", currPlayer.CellType.ToString(), );
 
                 r_GameWindow.UpdatePlayerStat(i, currPlayer.Score);
             }
-
-            /*
-             StringBuilder statusStrBuilder = new StringBuilder();
-
-            statusStrBuilder.AppendLine("Current Status:");
-
-            for (uint i = 0; i < i_GamePlayers.Length; i++)
-            {
-                GamePlayer currPlayer = i_GamePlayers.Get(i);
-                string currPlayerStr = string.Format("{0} Player: {1} Times won", currPlayer.CellType.ToString(), currPlayer.Score);
-
-                statusStrBuilder.AppendLine(currPlayerStr);
-            }
-
-            Console.Write(statusStrBuilder.ToString());
-             */
-
         }
-
-        //todo: delegate instead
-        public void UpdateCurrentUsersTurn(GameBoardCell.eType i_CurrPlayerCell)
-        {
-
-        }
-
+        
         public void Close()
         {
-            //todo:
+            r_GameWindow.Close();
         }
     }
 }

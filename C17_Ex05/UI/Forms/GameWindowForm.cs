@@ -15,22 +15,38 @@ namespace C17_Ex05.UI.Forms
 
     public partial class GameWindowForm : Form
     {
+        public event BoardCellChosenEventHandler BoardCellChosen;
         private readonly uint r_BoardSize;
+        private string[] m_PlayerNames;
 
         //todo: name..
         //todo: choice should start from 1 and not from 0
-        public event BoardCellChosenEventHandler BoardCellChosen;
 
+
+        private Label m_PlayerLabels;
         public GameWindowForm(uint i_BoardSize)
         {
             r_BoardSize = i_BoardSize;
             //todo: Create labels according to amount of players
             InitializeComponent();
+            createBoardButtons();
+            createPlayersLabels();
+        }
+
+        private void createBoardButtons()
+        {
+
+        }
+
+        private void createPlayersLabels()
+        {
+
         }
 
         public void SetPlayers(string[] i_PlayerNames)
         {
-
+            m_PlayerNames = i_PlayerNames;
+            //todo : generate labels
         }
 
         public void UpdatePlayerStat(uint i_PlayerIndex, uint i_Score)
@@ -46,12 +62,14 @@ namespace C17_Ex05.UI.Forms
 
         public bool PromptQuestion(string i_Title, string i_Msg)
         {
-            return true; //todo:
+            DialogResult dialogResult = MessageBox.Show(i_Msg, i_Title, MessageBoxButtons.YesNo);
+
+            return dialogResult == DialogResult.Yes;
         }
 
         public void ShowMsg(string i_Title, string i_Msg)
         {
-            //todo:...
+            MessageBox.Show(i_Msg, i_Title);
         }
     }
 }

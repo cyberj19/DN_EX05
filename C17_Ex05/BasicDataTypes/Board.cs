@@ -1,11 +1,15 @@
 ﻿namespace C17_Ex05.BasicDataTypes
 {
+    //todo: is good name
+    internal delegate void BoardCellSetEventHandler(Point i_Pos);
+
     // Represents a board with type 'T' Cells
-    class Board<T>
+    internal class Board<T>
     {
         private readonly T[,] r_Cells;
         private readonly uint r_NumRows;
         private readonly uint r_NumCols;
+        internal event BoardCellSetEventHandler BoardCellSet;
 
         public uint Rows
         {

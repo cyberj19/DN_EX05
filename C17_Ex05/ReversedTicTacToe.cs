@@ -31,7 +31,7 @@ namespace C17_Ex05
         {
             m_UI = new WindowsUI(new PositiveRange(k_MinBoardSize, k_MaxBoardSize));
             m_GamePlayers = GamePlayers.CreateFromGameType(m_UI.InitialParams.GameType, m_UI.InitialParams.PlayerNames);
-            m_UI.RegisterOnInput(this.handleInput);
+            m_UI.RegisterOnInput(this.windowsUI_BoardCellChosen);
             startNewGame();
         }
 
@@ -41,7 +41,9 @@ namespace C17_Ex05
             m_UI.Run();
         }
 
-        public bool handleInput(Point i_Input)
+        //todo: is good name?... its not the actual object, but its a proxy so thats why WindowsUI_....
+//        public bool handleInput(Point i_Input)
+        private bool windowsUI_BoardCellChosen(Point i_Input)
         {
             eSingleMoveResult currMoveResult;
             Point? currInput = i_Input;

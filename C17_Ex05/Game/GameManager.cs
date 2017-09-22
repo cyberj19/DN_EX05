@@ -51,6 +51,12 @@ namespace C17_Ex05.Game
             r_Logic = new GameLogic(r_Board, r_Players);
         }
 
+        public void RegisterOnCellChanges(BoardCellSetEventHandler i_HandleBoardCellSetFunc)
+        {
+            r_Board.BoardCellSet += i_HandleBoardCellSetFunc;
+        }
+
+
         // Is input required for the next playing player
         public bool IsInputRequiredForCurrentTurn()
         {
