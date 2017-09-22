@@ -62,6 +62,12 @@
     <Compile Include="UI\Forms\GameWindowForm.Designer.cs">
       <DependentUpon>GameWindowForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Forms\ParamsDialogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\ParamsDialogForm.Designer.cs">
+      <DependentUpon>ParamsDialogForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ReversedTicTacToeParams.cs" />
     <Compile Include="UI\WindowsUI.cs" />
     <Compile Include="Utils\ConsoleUtils.cs" />
