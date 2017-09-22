@@ -65,6 +65,7 @@ namespace C17_Ex05.UI.Forms
             //todo: Decide whether should allow resizing
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
+            StartPosition = FormStartPosition.CenterScreen;
         }
 
         private int generateFormWidth()
@@ -91,9 +92,11 @@ namespace C17_Ex05.UI.Forms
 
                     currButton.Click += BoardButton_Click; //todo: consider making lambda with pos
                     currButton.Left = currLeft;
+                    currButton.Font = new Font(currButton.Font.FontFamily, currButton.Font.Size, FontStyle.Bold);
                     currButton.Top = currTop;
                     currButton.Height = k_ButtonHeight;
                     currButton.Width = k_ButtonWidth;
+                    currButton.TabStop = false;
                     Controls.Add(currButton);
                     r_BoardButtons[currRow, currCol] = currButton;
                     currLeft += currButton.Width + k_ButtonLeftPadding;
@@ -172,9 +175,16 @@ namespace C17_Ex05.UI.Forms
 
         public void ResetBoard()
         {
-            //todo go over entire board and reset
-            //r_BoardButtons[i_Pos.Y, i_Pos.X].Text = string.empty;
-            //r_BoardButtons[i_Pos.Y, i_Pos.X].Enabled = true;
+            for (uint currRow = 0; currRow < r_BoardSize; currRow++)
+            {
+                for (uint currCol = 0; currCol < r_BoardSize; currCol++)
+                {
+                    Button currButton = r_BoardButtons[currRow, currCol];
+
+                    currButton.Text = string.Empty;
+                    currButton.Enabled = true;
+                }
+            }
         }
 
         public bool PromptQuestion(string i_Title, string i_Msg)

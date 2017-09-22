@@ -62,6 +62,12 @@ namespace C17_Ex05
                     {
                         m_UI.Close();
                     }
+                    else
+                    {
+                        startNewGame();
+                    }
+
+                    break;
                 }
             }
             while (!m_CurrGameManager.IsInputRequiredForCurrentTurn());
@@ -72,7 +78,7 @@ namespace C17_Ex05
             //todo: when to return false and when to write about error?
             return true;
         }
-
+        //todo: if player wins and not computer, stuck forever and msgbox will be shown no matter if u press yes or no (Close doesnt work!)
         private void startNewGame()
         {
             m_CurrGameManager = new GameManager(m_UI.InitialParams.BoardSize, m_GamePlayers);

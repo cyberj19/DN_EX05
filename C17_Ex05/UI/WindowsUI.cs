@@ -3,6 +3,7 @@ using C17_Ex05.Game;
 using C17_Ex05.Game.Player;
 using C17_Ex05.UI.Forms;
 using System;
+using System.Windows.Forms;
 
 namespace C17_Ex05.UI
 {
@@ -108,6 +109,7 @@ namespace C17_Ex05.UI
         public void Close()
         {
             r_GameWindow.Close();
+            Application.Exit();
         }
     }
 }
