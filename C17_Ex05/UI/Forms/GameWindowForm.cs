@@ -35,7 +35,13 @@ namespace C17_Ex05.UI.Forms
         private string[] m_PlayerNames;
         private Label[] m_PlayersLabels;
 
-
+        internal BasicDataTypes.BoardCellSetEventHandler BoardCellSetHandler
+        {
+            get
+            {
+                return Board_BoardCellSet;
+            }
+        }
 
         public GameWindowForm(string i_Title, uint i_BoardSize)
         {
@@ -100,7 +106,35 @@ namespace C17_Ex05.UI.Forms
 
         private void BoardButton_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            //todo: name
+            OnBoardCellChosen(findButtonPos((Button)sender));
+        }
+
+        private BasicDataTypes.Point findButtonPos(Button i_Button)
+        {
+            BasicDataTypes.Point? ret = null;
+
+            for (uint currRow = 0; currRow < r_BoardSize; currRow++)
+            {
+                for (uint currCol = 0; currCol < r_BoardSize; currCol++)
+                {
+                    if (r_BoardButtons[currRow, currCol].Equals(i_Button))
+                    {
+                        ret = new BasicDataTypes.Point(currCol, currRow);
+                    }
+                }
+            }
+
+            // if not found, an excpetion will be thrown
+            return ret.Value;
+        }
+
+        protected virtual void OnBoardCellChosen(BasicDataTypes.Point i_Pos)
+        {
+            if (BoardCellChosen != null)
+            {
+                BoardCellChosen.Invoke(i_Pos);
+            }
         }
 
         private void createPlayersLabels()
@@ -124,6 +158,13 @@ namespace C17_Ex05.UI.Forms
             }
         }
 
+        //todo: name..
+        private void Board_BoardCellSet(BasicDataTypes.Point i_Pos, string i_ValueStr)
+        {
+            r_BoardButtons[i_Pos.Y, i_Pos.X].Text = i_ValueStr;
+            r_BoardButtons[i_Pos.Y, i_Pos.X].Enabled = false;
+        }
+
         public void UpdatePlayerStat(uint i_PlayerIndex, uint i_Score)
         {
 
@@ -131,8 +172,9 @@ namespace C17_Ex05.UI.Forms
 
         public void ResetBoard()
         {
-            //todo:... 
-            //todo: Perhaps create this instance again instead of reseting it.
+            //todo go over entire board and reset
+            //r_BoardButtons[i_Pos.Y, i_Pos.X].Text = string.empty;
+            //r_BoardButtons[i_Pos.Y, i_Pos.X].Enabled = true;
         }
 
         public bool PromptQuestion(string i_Title, string i_Msg)

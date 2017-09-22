@@ -78,6 +78,7 @@ namespace C17_Ex05
             m_CurrGameManager = new GameManager(m_UI.InitialParams.BoardSize, m_GamePlayers);
             m_GamePlayers.ResetLogicState();
             m_UI.Clear();
+            m_CurrGameManager.RegisterOnCellChanges(m_UI.BoardCellSetHandler);
         }
 
         // run a single move

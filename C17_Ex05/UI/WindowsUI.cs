@@ -15,6 +15,14 @@ namespace C17_Ex05.UI
         private readonly ReversedTicTacToeParams r_ReversedTicTacToeParams;
         private readonly TwoDimensionalPositiveRange r_BoardCellChoosingRange; // can be changed outside c'tor
 
+        internal BoardCellSetEventHandler BoardCellSetHandler
+        {
+            get
+            {
+                return r_GameWindow.BoardCellSetHandler;
+            }
+        }
+
         public ReversedTicTacToeParams InitialParams
         {
             get

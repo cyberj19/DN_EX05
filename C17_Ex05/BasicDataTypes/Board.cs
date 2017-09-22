@@ -1,7 +1,7 @@
 ﻿namespace C17_Ex05.BasicDataTypes
 {
     //todo: is good name
-    internal delegate void BoardCellSetEventHandler(Point i_Pos);
+    internal delegate void BoardCellSetEventHandler(Point i_Pos, string i_ValueStr);
 
     // Represents a board with type 'T' Cells
     internal class Board<T>
@@ -44,6 +44,15 @@
         public void Set(Point i_Pos, T i_NewCell)
         {
             r_Cells[i_Pos.Y, i_Pos.X] = i_NewCell;
+            OnBoardCellSet(i_Pos, i_NewCell.ToString()); //todo : name..
+        }
+
+        protected virtual void OnBoardCellSet(Point i_Pos, string i_ValueStr)
+        {
+            if (BoardCellSet != null)
+            {
+                BoardCellSet.Invoke(i_Pos, i_ValueStr);
+            }
         }
 
         // Get cell at specific index
