@@ -10,7 +10,7 @@ namespace C17_Ex05.UI
     {
         private const uint k_BoardMinChoice = 1; //todo: might need to delete this
         private readonly PositiveRange r_BoardRange;
-        private readonly ParamsDialogForm r_ParamsDialog; //todo: can be readonly?
+        //private readonly ParamsDialogForm r_ParamsDialog; //todo: can be readonly?
         private readonly GameWindowForm r_GameWindow;
         private readonly ReversedTicTacToeParams r_ReversedTicTacToeParams;
         private readonly TwoDimensionalPositiveRange r_BoardCellChoosingRange; // can be changed outside c'tor
@@ -24,19 +24,20 @@ namespace C17_Ex05.UI
         }
             
 
-        public WindowsUI(PositiveRange i_BoardRange)
+        public WindowsUI(string i_Title, PositiveRange i_BoardRange)
         {
             r_BoardRange = i_BoardRange; //todo: is still required?
-            r_ParamsDialog = new ParamsDialogForm(i_BoardRange); //todo: ENFORCE MAX TEXT SIZE!!!!!!!!!!!! otherwise names very long..
-            r_ParamsDialog.Show();
-            r_ReversedTicTacToeParams = new ReversedTicTacToeParams(r_ParamsDialog.GameType, r_ParamsDialog.BoardSize, r_ParamsDialog.PlayerNames);
+            // r_ParamsDialog = new ParamsDialogForm(i_BoardRange); //todo: ENFORCE MAX TEXT SIZE!!!!!!!!!!!! otherwise names very long.. also enforce computer name
+            // r_ParamsDialog.Show();
+            //            r_ReversedTicTacToeParams = new ReversedTicTacToeParams(r_ParamsDialog.GameType, r_ParamsDialog.BoardSize, r_ParamsDialog.PlayerNames);
+            r_ReversedTicTacToeParams = new ReversedTicTacToeParams(new GameType(GameType.eGameType.PlayerVsComputer), 5, new string[] { "Player 1", "Computer" });
             r_BoardCellChoosingRange = new TwoDimensionalPositiveRange(k_BoardMinChoice, r_ReversedTicTacToeParams.BoardSize, k_BoardMinChoice, r_ReversedTicTacToeParams.BoardSize);
-            r_GameWindow = new GameWindowForm(r_ReversedTicTacToeParams.BoardSize);
+            r_GameWindow = new GameWindowForm(i_Title, r_ReversedTicTacToeParams.BoardSize);
         }
 
         public void Run()
         {
-            r_GameWindow.Show();
+            r_GameWindow.ShowDialog();
         }
 
         public void Clear()

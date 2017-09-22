@@ -21,6 +21,7 @@ namespace C17_Ex05
             GameOver,
         }
 
+        private string k_WindowTitle = "TicTacToeMisere";
         private uint k_MinBoardSize = 3;
         private uint k_MaxBoardSize = 9;
         private WindowsUI m_UI;
@@ -29,7 +30,7 @@ namespace C17_Ex05
 
         public ReversedTicTacToe()
         {
-            m_UI = new WindowsUI(new PositiveRange(k_MinBoardSize, k_MaxBoardSize));
+            m_UI = new WindowsUI(k_WindowTitle, new PositiveRange(k_MinBoardSize, k_MaxBoardSize));
             m_GamePlayers = GamePlayers.CreateFromGameType(m_UI.InitialParams.GameType, m_UI.InitialParams.PlayerNames);
             m_UI.RegisterOnInput(this.windowsUI_BoardCellChosen);
             m_UI.InitWindow(m_GamePlayers);

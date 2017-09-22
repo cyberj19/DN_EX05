@@ -56,7 +56,6 @@
     <Compile Include="Game\State\GameState.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ReversedTicTacToe.cs" />
-    <Compile Include="UI\ConsoleUI.cs" />
     <Compile Include="UI\Forms\GameWindowForm.cs">
       <SubType>Form</SubType>
     </Compile>

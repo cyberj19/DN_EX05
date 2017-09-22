@@ -37,12 +37,12 @@ namespace C17_Ex05.UI.Forms
 
 
 
-        public GameWindowForm(uint i_BoardSize)
+        public GameWindowForm(string i_Title, uint i_BoardSize)
         {
             r_BoardSize = (int)i_BoardSize;
             r_BoardButtons = new Button[r_BoardSize, r_BoardSize];
             InitializeComponent();
-            
+            Text = i_Title;            
         }
 
         public void Init(string[] i_PlayerNames)
@@ -105,8 +105,8 @@ namespace C17_Ex05.UI.Forms
 
         private void createPlayersLabels()
         {
-            int currLeft = Width / 2;
-            int labelTop = Height - k_LabelHeight - k_LabelTopPadding;
+            int currLeft = ClientSize.Width / 2 - k_ButtonWidth - k_ButtonLeftPadding;
+            int labelTop = ClientSize.Height - k_LabelHeight - k_LabelTopPadding;
 
             m_PlayersLabels = new Label[m_PlayerNames.Length];
 
