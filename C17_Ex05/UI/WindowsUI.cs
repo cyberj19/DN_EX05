@@ -27,7 +27,7 @@ namespace C17_Ex05.UI
         public WindowsUI(PositiveRange i_BoardRange)
         {
             r_BoardRange = i_BoardRange; //todo: is still required?
-            r_ParamsDialog = new ParamsDialogForm(i_BoardRange);
+            r_ParamsDialog = new ParamsDialogForm(i_BoardRange); //todo: ENFORCE MAX TEXT SIZE!!!!!!!!!!!! otherwise names very long..
             r_ParamsDialog.Show();
             r_ReversedTicTacToeParams = new ReversedTicTacToeParams(r_ParamsDialog.GameType, r_ParamsDialog.BoardSize, r_ParamsDialog.PlayerNames);
             r_BoardCellChoosingRange = new TwoDimensionalPositiveRange(k_BoardMinChoice, r_ReversedTicTacToeParams.BoardSize, k_BoardMinChoice, r_ReversedTicTacToeParams.BoardSize);
@@ -81,9 +81,9 @@ namespace C17_Ex05.UI
             return PromptQuestion(msgboxTitle, msgboxText);
         }
 
-        public void SetPlayers(GamePlayers i_GamePlayers)
+        public void InitWindow(GamePlayers i_GamePlayers)
         {
-            r_GameWindow.SetPlayers(i_GamePlayers.GetNames());
+            r_GameWindow.Init(i_GamePlayers.GetNames());
         }
 
         public void UpdatePlayersStats(GamePlayers i_GamePlayers)
