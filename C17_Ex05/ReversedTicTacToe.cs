@@ -85,6 +85,7 @@ namespace C17_Ex05
             m_GamePlayers.ResetLogicState();
             m_UI.Clear();
             m_CurrGameManager.RegisterOnCellChanges(m_UI.BoardCellSetHandler);
+            m_CurrGameManager.UserTurnChanged += m_UI.UserTurnChangedHandler;
         }
 
         // run a single move

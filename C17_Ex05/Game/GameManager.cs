@@ -3,6 +3,11 @@ using C17_Ex05.BasicDataTypes;
 
 namespace C17_Ex05.Game
 {
+    //todo: Perhaps move to a different file. should this be in this section anyway? 
+
+    internal delegate void UserTurnChangedEventHandler(uint i_UserTurnIndex);
+
+
     // Manages a Single-Game
     class GameManager
     {
@@ -19,6 +24,7 @@ namespace C17_Ex05.Game
         private readonly Board<GameBoardCell> r_Board;
         private readonly GameLogic r_Logic;
         private uint m_CurrPlayersTurn = 0;
+        public event UserTurnChangedEventHandler UserTurnChanged;
 
         public Board<GameBoardCell> Board
         {
@@ -55,8 +61,7 @@ namespace C17_Ex05.Game
         {
             r_Board.BoardCellSet += i_HandleBoardCellSetFunc;
         }
-
-
+        
         // Is input required for the next playing player
         public bool IsInputRequiredForCurrentTurn()
         {
@@ -72,6 +77,15 @@ namespace C17_Ex05.Game
         public bool IsGameOver()
         {
             return r_Logic.IsGameOver();
+        }
+
+        //todo: name
+        protected virtual void OnUserTurnChanged()
+        {
+            if (UserTurnChanged != null)
+            {
+                UserTurnChanged.Invoke(m_CurrPlayersTurn);
+            }
         }
 
         // handle a make move request from the game runner
@@ -93,6 +107,11 @@ namespace C17_Ex05.Game
                 {
                     retResult = handleValidMakeMoveRequest(i_InputForMove);
                 }
+            }
+
+            if (retResult == eMoveResult.Success)
+            {
+                OnUserTurnChanged();
             }
 
             return retResult;

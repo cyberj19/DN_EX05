@@ -24,6 +24,14 @@ namespace C17_Ex05.UI
             }
         }
 
+        internal UserTurnChangedEventHandler UserTurnChangedHandler
+        {
+            get
+            {
+                return r_GameWindow.UserTurnChangedHandler;
+            }
+        }
+
         public ReversedTicTacToeParams InitialParams
         {
             get
@@ -39,7 +47,7 @@ namespace C17_Ex05.UI
             // r_ParamsDialog = new ParamsDialogForm(i_BoardRange); //todo: ENFORCE MAX TEXT SIZE!!!!!!!!!!!! otherwise names very long.. also enforce computer name
             // r_ParamsDialog.Show();
             //            r_ReversedTicTacToeParams = new ReversedTicTacToeParams(r_ParamsDialog.GameType, r_ParamsDialog.BoardSize, r_ParamsDialog.PlayerNames);
-            r_ReversedTicTacToeParams = new ReversedTicTacToeParams(new GameType(GameType.eGameType.PlayerVsComputer), 5, new string[] { "Player 1", "Computer" });
+            r_ReversedTicTacToeParams = new ReversedTicTacToeParams(new GameType(GameType.eGameType.PlayerVsPlayer), 5, new string[] { "Player 1", "PPP" });
             r_BoardCellChoosingRange = new TwoDimensionalPositiveRange(k_BoardMinChoice, r_ReversedTicTacToeParams.BoardSize, k_BoardMinChoice, r_ReversedTicTacToeParams.BoardSize);
             r_GameWindow = new GameWindowForm(i_Title, r_ReversedTicTacToeParams.BoardSize);
         }

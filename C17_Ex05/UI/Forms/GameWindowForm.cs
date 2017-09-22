@@ -34,6 +34,7 @@ namespace C17_Ex05.UI.Forms
         private readonly Button[,] r_BoardButtons; //todo: Saving them twice.. both in controls and here
         private string[] m_PlayerNames;
         private Label[] m_PlayersLabels;
+        private uint m_CurrentPlayersTurn;
 
         internal BasicDataTypes.BoardCellSetEventHandler BoardCellSetHandler
         {
@@ -43,12 +44,21 @@ namespace C17_Ex05.UI.Forms
             }
         }
 
+        internal Game.UserTurnChangedEventHandler UserTurnChangedHandler
+        {
+            get
+            {
+                return GameManager_UserTurnChanged;
+            }
+        }
+
         public GameWindowForm(string i_Title, uint i_BoardSize)
         {
             r_BoardSize = (int)i_BoardSize;
             r_BoardButtons = new Button[r_BoardSize, r_BoardSize];
             InitializeComponent();
-            Text = i_Title;            
+            Text = i_Title;
+            m_CurrentPlayersTurn = 0;
         }
 
         public void Init(string[] i_PlayerNames)
@@ -113,6 +123,17 @@ namespace C17_Ex05.UI.Forms
             OnBoardCellChosen(findButtonPos((Button)sender));
         }
 
+        //todo: name
+        private void GameManager_UserTurnChanged(uint i_UserIndex)
+        {
+            Label currBoldLabel = m_PlayersLabels[m_CurrentPlayersTurn];
+            Label newBoldLabel = m_PlayersLabels[i_UserIndex];
+
+            m_CurrentPlayersTurn = i_UserIndex;
+            currBoldLabel.Font = new Font(currBoldLabel.Font.Name, currBoldLabel.Font.Size, FontStyle.Regular);
+            newBoldLabel.Font = new Font(newBoldLabel.Font.Name, newBoldLabel.Font.Size, FontStyle.Bold);
+        }
+
         private BasicDataTypes.Point findButtonPos(Button i_Button)
         {
             BasicDataTypes.Point? ret = null;
@@ -150,6 +171,11 @@ namespace C17_Ex05.UI.Forms
             for (int i = 0; i < m_PlayerNames.Length; i++)
             {
                 Label currLabel = new Label();
+
+                if (i == 0)
+                {
+                    currLabel.Font = new Font(currLabel.Font.Name, currLabel.Font.Size, FontStyle.Bold);
+                }
 
                 currLabel.Top = labelTop;
                 currLabel.Left = currLeft;
