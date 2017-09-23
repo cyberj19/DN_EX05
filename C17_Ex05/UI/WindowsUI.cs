@@ -45,7 +45,7 @@ namespace C17_Ex05.UI
         {
             r_BoardRange = i_BoardRange; //todo: is still required?
             // r_ParamsDialog = new ParamsDialogForm(i_BoardRange); //todo: ENFORCE MAX TEXT SIZE!!!!!!!!!!!! otherwise names very long.. also enforce computer name
-            // if (r_ParamsDialog.Show() == r_ParamsDialog.DialogResult.OK)
+            // r_ParamsDialog.Show();
             //            r_ReversedTicTacToeParams = new ReversedTicTacToeParams(r_ParamsDialog.GameType, r_ParamsDialog.BoardSize, r_ParamsDialog.PlayerNames);
             r_ReversedTicTacToeParams = new ReversedTicTacToeParams(new GameType(GameType.eGameType.PlayerVsPlayer), 5, new string[] { "Player 1", "PPP" });
             r_BoardCellChoosingRange = new TwoDimensionalPositiveRange(k_BoardMinChoice, r_ReversedTicTacToeParams.BoardSize, k_BoardMinChoice, r_ReversedTicTacToeParams.BoardSize);
